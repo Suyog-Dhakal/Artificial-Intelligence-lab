@@ -1,0 +1,19 @@
+PREDICATES
+hcf(integer,integer,integer)
+
+CLAUSES
+hcf(X,Y,R):- X=Y,R=X.
+
+hcf(X,Y,R):-
+	X>Y,
+	T1=X-Y,
+	hcf(T1,Y,R).
+
+hcf(X,Y,R):-
+	X<Y,
+	T2=Y-X,
+	hcf(X,T2,R).
+	
+GOAL
+hcf(36,60,R).
+	
