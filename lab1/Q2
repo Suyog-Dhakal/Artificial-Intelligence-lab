@@ -1,0 +1,16 @@
+%Program that finds whether two people are siblings or not
+
+PREDICATES
+parents(STRING,STRING,STRING)
+siblings(STRING,STRING)
+
+CLAUSES
+parents("Suman","Kyamuna","Shubekshya").
+parents("Suman","Kyamuna","Samikshya").
+parents("Sudip","Sushma","Samyog").
+
+siblings(A,B):-
+	parents(C,D,A), parents(C,D,B).
+
+GOAL
+siblings("Samikshya","Shubekshya").
