@@ -1,0 +1,16 @@
+DOMAINS
+int_list = integer*
+
+PREDICATES
+onetwos(int_list,int_list)
+
+CLAUSES
+onetwos([],[]).
+onetwos([H|T],[H|S]):-
+	(H=1;H=2),onetwos(T,S).
+onetwos([H|T],S):-
+	H\=1,
+	H\=2,
+	onetwos(T,S).
+GOAL
+onetwos([1,2,3,4,3,2,1]).
