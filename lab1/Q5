@@ -1,0 +1,13 @@
+DOMAINS
+int_list = integer*
+
+PREDICATES
+append(int_list,int_list,int_list)
+
+CLAUSES
+append([],L,L).
+append([H|L1],L2,[H|L3]):- append(L1,L2,L3).
+
+GOAL
+append([1,2,3,4],[5,6,7,8],Z).
+
