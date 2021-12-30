@@ -1,16 +1,28 @@
 DOMAINS
-int_list = integer*
+list = integer*
 
 PREDICATES
-onetwos(int_list,int_list)
+isOne(integer)
+isTwo(integer)
+displaylist(list)
 
 CLAUSES
-onetwos([],[]).
-onetwos([H|T],[H|S]):-
-	(H=1;H=2), onetwos(T,S).
-onetwos([H|T],S):-
-	H\=1,
-	H\=2,
-	onetwos(T,S).
+isOne(1).
+isTwo(2).
+displaylist([]).
+displaylist([H|T]):-
+	isOne(H),
+	write(H),
+	displaylist(T),
+	!.
+displaylist([H|T]):-
+	isTwo(H),
+	write(H),
+	displaylist(T),
+	!.
+displaylist([_|T]):-
+	displaylist(T),
+	!.
+	
 GOAL
-onetwos([1,2,3,4,3,2,1]).
+displaylist([1,2,3,4,3,2,1]).
