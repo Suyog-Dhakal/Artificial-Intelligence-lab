@@ -20,7 +20,7 @@ read_a_list(Y):-
 insert(0,Y,_):-
 	write("these were the elements you inserted"),
 	nl,
-	write('["),
+	write("["),
 	display(Y).
 	
 insert(X,Y,[X|Y]).

@@ -1,34 +1,15 @@
 DOMAINS
-list = integer*
+int_list = integer*
 
 PREDICATES
-start
-read_a_list(list)
-insert(integer,list,list)
-display(list)
+sumlist(int_list,integer)
 
 CLAUSES
-start:-
-	write("enter the numbers"),
-	nl,
-	write("enter 0 to stop"),nl,
-	read_a_list([]).
-read_a_list(Y):-
-	readint(X),
-	insert(X,Y,Z),
-	read_a_list(Z).
-insert(0,Y,_):-
-	write("these were the elements you inserted"),
-	nl,
-	write("["),
-	display(Y).
-	
-insert(X,Y,[X|Y]).
+sumlist([],0).
 
-display([]):-
-	write("]"),nl.
-display([H|T]):-
-	write(H),write("\t"),display(T).
+sumlist([H|T],Sum):-
+	sumlist(T,S),
+	Sum = S + H.
 
-GOAL
-start.
+GOAL 
+sumlist([1,3,5],X).
