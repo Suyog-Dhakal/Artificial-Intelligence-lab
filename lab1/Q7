@@ -1,0 +1,13 @@
+DOMAINS
+int_list=integer*
+
+PREDICATES
+del(integer,int_list,int_list)
+
+CLAUSES
+del(0,[H|T],T).
+del(P,[H|T],[H|Z]):-
+P1=P-1,del(P1,T,Z).
+
+GOAL
+del(1,[10,20,30,40,50,60],X).
