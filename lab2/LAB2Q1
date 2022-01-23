@@ -1,0 +1,52 @@
+
+%  MATH
+% +MATH
+%-------
+% HABIT
+
+DOMAINS
+int_list=integer*
+
+PREDICATES
+solution(int_list)
+member(integer,int_list)
+ 
+CLAUSES
+	solution([]).
+	solution([M,A,T,H,B,I]):-
+	C4=1, 
+	member(C1,[0,1]),
+	member(C2,[0,1]),
+	member(C3,[0,1]),
+	
+% C1, C2, C3 will have values 0 or 1
+
+member(M,[0,1,2,3,4,5,6,7,8,9]),
+member(A,[0,1,2,3,4,5,6,7,8,9]),
+member(T,[0,1,2,3,4,5,6,7,8,9]),
+member(H,[0,1,2,3,4,5,6,7,8,9]),
+member(B,[0,1,2,3,4,5,6,7,8,9]),
+member(I,[0,1,2,3,4,5,6,7,8,9]),
+
+% M, A, T, H, B, I will have values between 0 and 9.
+% The values of M, A, T, H, B, I must not be equal.
+
+M<>A, M<>T, M<>H, M<>B, M<>I,
+A<>T, A<>H, A<>B, A<>I,
+T<>H, T<>B, T<>I,
+H<>B, M<>I,
+B<>I,
+
+% Computation for solution
+H + H = T + 10*C1,
+T + T + C1 = I + 10*C2,
+A + A + C2 = B + 10*C3,
+M + M + C3 = A + 10*C4,
+H = C4.
+
+member(X, [X|_]).	
+member(X, [_|Z]):-
+member(X,Z).
+
+GOAL
+solution([M,A,T,H,B,I]).
