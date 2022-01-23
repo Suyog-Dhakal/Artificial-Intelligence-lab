@@ -30,4 +30,4 @@ CLAUSES
 	member(X,[_|Z]):-
 		member(X,Z).
 GOAL
-	solution ([c(1,1),c(2,B),c(3,C),c(4,8),c(5,E),c(6,F),c(7,G),c(8,H)]).
+	solution ([c(1,A),c(2,B),c(3,C),c(4,D),c(5,E),c(6,F),c(7,G),c(8,H)]).
