@@ -1,0 +1,21 @@
+PREDICATES
+	member(symbol,symbol).
+	canDo(symbol,symbol).
+	dad(symbol,symbol).
+	cannotDo(symbol,symbol).
+CLAUSES
+	member(dave,dancingclub).
+	member(fred,dancingclub).
+	cannotDo(X,waltz):-
+		member(X,dancingclub),
+		canDo(X,jive).
+	cannotDo(X,jive):-
+		member(X,dancingclub),
+		canDo(X,waltz).
+	cannotDo(freddad,waltz).
+	canDo(dave,X):-
+		cannotDo(fred,X).
+	dad(freddad,fred).
+
+GOAL
+	cannotDo(X,jive).

@@ -1,0 +1,25 @@
+
+PREDICATES
+	mammal(STRING,STRING,STRING).
+	offspring(STRING, STRING).
+	is_horse(STRING).
+	parent(STRING, STRING).
+	inverse(STRING, STRING).
+	has_parent(STRING,STRING,STRING).
+
+CLAUSES
+	mammal("horse","cow","pig").
+	offspring("horse","horse").
+	is_horse("Bluebeard").
+	parent("Bluebeard","Charlie").
+
+	inverse(X,Y):-
+  		parent(X,Y),
+  		offspring(Y,X).
+
+	has_parent(X,Y,Z):-
+  		mammal(X,Y,Z).
+  		
+  
+GOAL
+	is_horse("Charlie").

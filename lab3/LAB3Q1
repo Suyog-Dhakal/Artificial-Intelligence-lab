@@ -1,0 +1,33 @@
+
+PREDICATES
+	mammal(STRING)
+	is_horse(STRING)
+	is_cow(STRING)
+	is_pig(STRING)
+	is_parent(STRING,STRING)
+	is_offspring(STRING,STRING)
+	has_parent(STRING)
+
+CLAUSES
+	mammal(X):-
+		is_horse(X) OR is_cow(X) OR is_pig(X).	
+		
+	is_parent("Bluebeard", "Charlie").
+	
+	is_offspring(X,Y):-
+		is_parent(Y,X).
+		
+	is_horse("Bluebeard").
+	
+	is_horse(X):-
+		is_offspring(X,Y),
+		is_horse(Y).
+		
+	has_parent(X):-
+		mammal(X).
+	is_cow("X").
+	
+	is_pig("Y").
+	
+GOAL
+	is_horse("Charlie").

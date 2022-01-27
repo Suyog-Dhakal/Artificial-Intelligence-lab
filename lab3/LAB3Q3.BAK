@@ -1,0 +1,32 @@
+PREDICATES
+	isPompeians(STRING).
+	isRoman(STRING).
+	wasLoyal(STRING,STRING).
+	hated(STRING,STRING).
+	assassinated(STRING,STRING).
+	wasnotLoyal(STRING,STRING).
+
+CLAUSES
+	isRoman(X):-
+		isPompeians(X).
+		
+	wasLoyal(X,"Caesar"):-
+		isRoman(X),
+		not(hated(X,"Caesar")).
+	
+	wasnotLoyal(X,Y):-
+		assassinated(X,Y).
+	
+	assassinated("Marcus","Caesar").
+		
+	hated(X,"Caesar"):-
+		isRoman(X),
+		not(wasLoyal(X,"Caesar")).
+	
+	isPompeians("Marcus").
+	
+	
+GOAL
+hated("Marcus","Caesar").
+
+	

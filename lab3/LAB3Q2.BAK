@@ -1,0 +1,25 @@
+
+PREDICATES
+	isHappy(STRING).
+	isWealthy(STRING).
+	isSmart(STRING).
+	canRead(STRING).
+	isStupid(STRING).
+	hasExcitingLife(STRING).
+	
+CLAUSES
+	canRead(John).
+	isWealthy(John).
+	
+	hasExcitingLife(X):-
+		isHappy(X).
+		
+	isHappy(X):-
+		isWealthy(X),
+		isSmart(X).
+	
+	isSmart(X):-
+		canRead(X).
+	
+GOAL
+	hasExcitingLife(John).
