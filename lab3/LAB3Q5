@@ -1,21 +1,27 @@
 PREDICATES
-	member(symbol,symbol).
-	canDo(symbol,symbol).
-	dad(symbol,symbol).
-	cannotDo(symbol,symbol).
+	nondeterm can_do(symbol, symbol)
+	nondeterm member(symbol, symbol)
+	nondeterm dad(symbol, symbol)
+	nondeterm cant_do(symbol, symbol)
 CLAUSES
-	member(dave,dancingclub).
-	member(fred,dancingclub).
-	cannotDo(X,waltz):-
-		member(X,dancingclub),
-		canDo(X,jive).
-	cannotDo(X,jive):-
-		member(X,dancingclub),
-		canDo(X,waltz).
-	cannotDo(freddad,waltz).
-	canDo(dave,X):-
-		cannotDo(fred,X).
-	dad(freddad,fred).
+	member(dave, dancingclub).
+	member(fred, dancingclub).
+	cant_do(freddad,waltz).
+	cant_do(X,Y):-
+		 dad(Z,X),
+		 cant_do(Z,Y).
+		 
+	cant_do(X,waltz):-
+	 	member(X, dancingclub),
+	 	can_do(X,jive).
+	 	
+	cant_do(X,jive):-
+		 member(X, dancingclub),
+		 can_do(X,waltz).
+		 
+	can_do(dave,X):- 
+		cant_do(fred, X).
+		dad(freddad,fred).
 
 GOAL
-	cannotDo(X,jive).
+	member(X,dancingclub),cant_do(X,jive).
