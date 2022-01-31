@@ -1,10 +1,10 @@
 PREDICATES
 	pompeian(symbol)
-	nondeterm roman(symbol)
-	nondeterm loyal(symbol, symbol)
-	nondeterm hate(symbol, symbol)
-	nondeterm assasinate(symbol, symbol)
-	nondeterm not_loyal(symbol, symbol)
+	 roman(symbol)
+	 loyal(symbol, symbol)
+	 hate(symbol, symbol)
+	 assasinate(symbol, symbol)
+	 not_loyal(symbol, symbol)
 	
 CLAUSES
 	roman(X):- pompeian(X).

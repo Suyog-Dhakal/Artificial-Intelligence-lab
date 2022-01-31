@@ -1,32 +1,18 @@
 PREDICATES
-	isPompeians(STRING).
-	isRoman(STRING).
-	wasLoyal(STRING,STRING).
-	hated(STRING,STRING).
-	assassinated(STRING,STRING).
-	wasnotLoyal(STRING,STRING).
-
+	pompeian(symbol)
+	 roman(symbol)
+	nondeterm loyal(symbol, symbol)
+	nondeterm hate(symbol, symbol)
+	nondeterm assasinate(symbol, symbol)
+	nondeterm not_loyal(symbol, symbol)
+	
 CLAUSES
-	isRoman(X):-
-		isPompeians(X).
-		
-	wasLoyal(X,"Caesar"):-
-		isRoman(X),
-		not(hated(X,"Caesar")).
-	
-	wasnotLoyal(X,Y):-
-		assassinated(X,Y).
-	
-	assassinated("Marcus","Caesar").
-		
-	hated(X,"Caesar"):-
-		isRoman(X),
-		not(wasLoyal(X,"Caesar")).
-	
-	isPompeians("Marcus").
-	
-	
+	roman(X):- pompeian(X).
+	assasinate(marcus, ceasar).
+	pompeian(marcus).
+	hate(X,ceasar):- roman(X), not_loyal(X,ceasar).
+	loyal(X,ceasar):- roman(X), not(hate(X,ceasar)).
+	not_loyal(X,Y):- assasinate(X,Y).
 GOAL
-hated("Marcus","Caesar").
-
+hate(marcus, ceasar).
 	
